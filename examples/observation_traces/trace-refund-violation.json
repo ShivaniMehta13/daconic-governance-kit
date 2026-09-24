@@ -1,0 +1,56 @@
+{
+  "schema_version": "1",
+  "interaction_id": "dh-refund-violation-001",
+  "correlation_id": "dh-pair-1",
+  "agent_id": "refund-agent",
+  "action": "llm_send",
+  "scenario": "without_processing",
+  "policy": {
+    "id": "llm-data-policy",
+    "version": "v1"
+  },
+  "context": {
+    "principal": "agent-1",
+    "delegated_user": null,
+    "resource": "TXN-002",
+    "destination": "approved-model"
+  },
+  "stages": {
+    "input": {
+      "availability": "present",
+      "source": "refund-agent-host",
+      "observed_at_ns": 1790142424000000000,
+      "representation": "canonical-json-v1",
+      "payload": {
+        "case_id": "CASE-002",
+        "transaction_id": "TXN-002",
+        "amount": 25000,
+        "card_number": "4242424242424242"
+      }
+    },
+    "transformed": {
+      "availability": "present",
+      "source": "refund-agent-host",
+      "observed_at_ns": 1790142424000000000,
+      "representation": "canonical-json-v1",
+      "payload": {
+        "case_id": "CASE-002",
+        "transaction_id": "TXN-002",
+        "amount": 25000,
+        "card_number": "4242424242424242"
+      }
+    },
+    "outbound": {
+      "availability": "present",
+      "source": "refund-agent-host",
+      "observed_at_ns": 1790142424000000000,
+      "representation": "canonical-json-v1",
+      "payload": {
+        "case_id": "CASE-002",
+        "transaction_id": "TXN-002",
+        "amount": 25000,
+        "card_number": "4242424242424242"
+      }
+    }
+  }
+}

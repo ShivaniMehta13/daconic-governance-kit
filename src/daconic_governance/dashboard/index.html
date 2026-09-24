@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Daconic Compliance Audit</title><link rel="stylesheet" href="/style.css"></head><body>
+<header><strong>Daconic / Compliance Audit Results</strong><button id="refresh">Refresh</button></header>
+<main><h1>Compliance Audit Results</h1><p>Observe and report. Findings apply to submitted evidence, not every action in the runtime.</p>
+<section id="auth"><label>Deployment access token <input id="token" type="password" autocomplete="off"></label><button id="connect">Connect</button><span>Held in memory for this page only.</span></section>
+<p id="message" role="status"></p>
+<details><summary>Policies evaluated</summary><div id="policies"></div></details>
+<div id="cards" class="cards"></div>
+<section><div class="tools"><input id="search" aria-label="Search results" placeholder="Search identifiers, checks or reasons"><select id="status" aria-label="Compliance filter"><option value="">All compliance statuses</option><option>COMPLIANT</option><option>VIOLATION</option><option>INSUFFICIENT_EVIDENCE</option><option>NOT_APPLICABLE</option></select><select id="scenario" aria-label="Scenario filter"><option value="">Both scenarios</option><option value="without_processing">Without processing</option><option value="with_processing">With processing</option></select><select id="agent" aria-label="Agent filter"><option value="">All agents</option></select><select id="severity" aria-label="Severity filter"><option value="">All severities</option><option value="high">High</option><option value="none">None</option></select></div></section>
+<section><h2>Evidence integrity</h2><button id="verify">Verify current bundle</button><p id="integrity">Not run. Compliance results are separate from cryptographic integrity.</p></section>
+<section class="table"><table><thead><tr><th>Created</th><th>Agent / interaction</th><th>Compliance</th><th>Integrity</th><th>Scenario</th><th>Details</th></tr></thead><tbody id="rows"></tbody></table></section></main>
+<dialog id="detail"><div class="tools"><h2>Compliance Audit Detail</h2><button id="copy">Copy safe JSON</button><button id="close">Close</button></div><div id="overview"></div><h3>Checks and coverage</h3><pre id="checks"></pre><h3>Correlated scenarios</h3><div id="comparison"></div><h3>Privacy-safe evidence report</h3><pre id="json"></pre></dialog>
+<script src="/app.js"></script></body></html>

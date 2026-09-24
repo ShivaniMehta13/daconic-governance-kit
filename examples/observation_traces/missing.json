@@ -1,0 +1,54 @@
+{
+  "schema_version": "1",
+  "interaction_id": "sample-missing",
+  "correlation_id": "pair-1",
+  "agent_id": "agent-1",
+  "action": "llm_send",
+  "scenario": "with_processing",
+  "policy": {
+    "id": "llm-data-policy",
+    "version": "v1"
+  },
+  "context": {
+    "principal": "agent-1",
+    "delegated_user": null,
+    "resource": "account-1",
+    "destination": "approved-model"
+  },
+  "stages": {
+    "input": {
+      "availability": "present",
+      "source": "synthetic-host",
+      "observed_at_ns": 1800000000000000000,
+      "representation": "canonical-json-v1",
+      "payload": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Contact alice@example.test about my account"
+          }
+        ]
+      }
+    },
+    "transformed": {
+      "availability": "present",
+      "source": "synthetic-host",
+      "observed_at_ns": 1800000000000000000,
+      "representation": "canonical-json-v1",
+      "payload": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Contact [REMOVED] about my account"
+          }
+        ]
+      }
+    },
+    "outbound": {
+      "availability": "unavailable",
+      "source": "synthetic-host",
+      "observed_at_ns": 1800000000000000000,
+      "representation": "canonical-json-v1"
+    }
+  }
+}

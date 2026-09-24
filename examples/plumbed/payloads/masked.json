@@ -1,0 +1,451 @@
+{
+  "question": "why was last trigger not able to push order with legacyResourceId =ORDER_DEMO_001? analyse\n    Please do your tasks according to the troubleshooting status as mentioned in the context.\n    ",
+  "images_uploaded_by_user": [],
+  "source_channel_global_images": [],
+  "target_channel_global_images": [],
+  "troubleshoot_mapping_status": null,
+  "source": "shopify",
+  "target": "microsoft_365_erp",
+  "source_api_doc_urls": [
+    "https://community.shopify.com/t/about-rest-admin-api-authentication-s-shop-parameter/234191",
+    "https://shopify.dev/docs/api/admin-rest",
+    "https://community.shopify.com/t/admin-api-list-all-orders-with-current-order-status/264373"
+  ],
+  "target_api_doc_urls": [
+    "https://www.mikaelsand.se/2022/06/talking-to-the-d365-fo-rest-apis",
+    "https://learn.microsoft.com/en-us/dynamics365/customerengagement/on-premises/developer/webapi/authenticate-web-api?view=op-9-1",
+    "https://www.facebook.com/groups/MSDNAV/posts/4203085609782634",
+    "https://developers.osano.com/integrations/data-discovery-integrations/microsoftdynamics365erp"
+  ],
+  "source_mapping": [
+    {
+      "mapping": {
+        "id": "id"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "number": "number"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "order_number": "order_number"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "financial_status": "financial_status"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "currency": "currency"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "created_at": "created_at"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "processed_at": "processed_at"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "updated_at": "updated_at"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "total_price": "total_price"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "total_tax": "total_tax"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "total_discounts": "total_discounts"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "customer,id": "customer,id"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "customer,email": "customer,email"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "customer,first_name": "customer,first_name"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,first_name": "shipping_address,first_name"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,address1": "shipping_address,address1"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,address2": "shipping_address,address2"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,city": "shipping_address,city"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,province": "shipping_address,province"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,zip": "shipping_address,zip"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,country_code": "shipping_address,country_code"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,first_name": "billing_address,first_name"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,address1": "billing_address,address1"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,address2": "billing_address,address2"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,city": "billing_address,city"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,province": "billing_address,province"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,zip": "billing_address,zip"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,country_code": "billing_address,country_code"
+      },
+      "rules": []
+    }
+  ],
+  "target_mapping": [
+    {
+      "mapping": {
+        "id": "id"
+      },
+      "rules": [
+        "str.numbertotext"
+      ]
+    },
+    {
+      "mapping": {
+        "number": "number"
+      },
+      "rules": [
+        "str.numbertotext"
+      ]
+    },
+    {
+      "mapping": {
+        "order_number": "externalNumber"
+      },
+      "rules": [
+        "str.numbertotext"
+      ]
+    },
+    {
+      "mapping": {
+        "financial_status": "status"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "currency": "currencyCode"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "created_at": "orderDate"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "processed_at": "createdDateTime"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "updated_at": "lastModifiedDateTime"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "total_price": "amountIncludingVAT"
+      },
+      "rules": [
+        "math.texttonumber"
+      ]
+    },
+    {
+      "mapping": {
+        "total_tax": "vatAmount"
+      },
+      "rules": [
+        "math.texttonumber"
+      ]
+    },
+    {
+      "mapping": {
+        "total_discounts": "discountAmount"
+      },
+      "rules": [
+        "math.texttonumber"
+      ]
+    },
+    {
+      "mapping": {
+        "customer,id": "customerId"
+      },
+      "rules": [
+        "str.numbertotext"
+      ]
+    },
+    {
+      "mapping": {
+        "customer,email": "shippingAddress,email"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "customer,first_name": "customerName"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,first_name": "shippingAddress,contact"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,address1": "shippingAddress,addressLine1"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,address2": "shippingAddress,addressLine2"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,city": "shippingAddress,city"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,province": "shippingAddress,state"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,zip": "shippingAddress,postalCode"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "shipping_address,country_code": "shippingAddress,countryRegionCode"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,first_name": "billingAddress,contact"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,address1": "billingAddress,addressLine1"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,address2": "billingAddress,addressLine2"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,city": "billingAddress,city"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,province": "billingAddress,state"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,zip": "billingAddress,postalCode"
+      },
+      "rules": []
+    },
+    {
+      "mapping": {
+        "billing_address,country_code": "billingAddress,countryRegionCode"
+      },
+      "rules": []
+    }
+  ],
+  "updated_source_mapping": [],
+  "updated_target_mapping": [],
+  "error_trigger_endpoint": "POST https://connector.example.test/store_microsoft_365_erp_orders",
+  "error_logs": "Push error log:\nStatus 502 on POST https://connector.example.test/store_microsoft_365_erp_orders. HTTP request error on POST /store_microsoft_365_erp_orders: response status_code=502, error=\"HTTP request error\", details=\"HTTPConnectionPool(host='198.51.100.42', port=5501): Max retries exceeded with url: /user/get-user-info (Caused by ConnectTimeoutError: Connection to 198.51.100.42 timed out. (connect timeout=60))\".",
+  "source_mapping_changes_confirm": false,
+  "target_mapping_changes_confirm": false,
+  "flattened_source_data": {
+    "id": "gid://shopify/Order/ORDER_DEMO_001",
+    "billingAddress": "[MASKED]",
+    "createdAt": "2026-07-19T08:42:08Z",
+    "currencyCode": "EUR",
+    "customer,id": "gid://shopify/Customer/CUSTOMER_DEMO_001",
+    "customer,email": "[MASKED_EMAIL]",
+    "displayFinancialStatus": "PAID",
+    "displayFulfillmentStatus": "UNFULFILLED",
+    "email": "[MASKED_EMAIL]",
+    "legacyResourceId": "ORDER_DEMO_001",
+    "lineItems,edges,iter,node,id": "gid://shopify/LineItem/LINE_DEMO_001",
+    "lineItems,edges,iter,node,title": "Product-apollon",
+    "lineItems,edges,iter,node,quantity": 20,
+    "lineItems,edges,iter,node,sku": null,
+    "lineItems,edges,iter,node,variant,id": "gid://shopify/ProductVariant/VARIANT_DEMO_001",
+    "lineItems,edges,iter,node,variant,legacyResourceId": "VARIANT_DEMO_001",
+    "lineItems,edges,iter,node,originalUnitPriceSet,shopMoney,amount": "10.0",
+    "lineItems,edges,iter,node,originalUnitPriceSet,shopMoney,currencyCode": "EUR",
+    "name": "[MASKED_NAME]",
+    "note": null,
+    "shippingAddress": "[MASKED]",
+    "subtotalPriceSet,shopMoney,amount": "200.0",
+    "subtotalPriceSet,shopMoney,currencyCode": "EUR",
+    "totalPriceSet,shopMoney,amount": "200.0",
+    "totalPriceSet,shopMoney,currencyCode": "EUR",
+    "totalShippingPriceSet,shopMoney,amount": "0.0",
+    "totalShippingPriceSet,shopMoney,currencyCode": "EUR",
+    "totalTaxSet,shopMoney,amount": "0.0",
+    "totalTaxSet,shopMoney,currencyCode": "EUR",
+    "updatedAt": "2026-07-21T10:50:21Z"
+  },
+  "flattened_target_data": {
+    "amountIncludingVAT": "",
+    "billingAddress,contact": "[MASKED]",
+    "billingAddress,addressLine1": "[MASKED]",
+    "billingAddress,addressLine2": "[MASKED]",
+    "billingAddress,city": "[MASKED]",
+    "billingAddress,state": "[MASKED]",
+    "billingAddress,postalCode": "[MASKED]",
+    "billingAddress,countryRegionCode": "[MASKED]",
+    "createdDateTime": "",
+    "currencyCode": "",
+    "customerId": "gid://shopify/Customer/CUSTOMER_DEMO_001",
+    "customerName": "",
+    "discountAmount": "",
+    "externalNumber": "",
+    "id": "gid://shopify/Order/ORDER_DEMO_001",
+    "lastModifiedDateTime": "",
+    "number": "",
+    "orderDate": "",
+    "shippingAddress,email": "[MASKED_EMAIL]",
+    "shippingAddress,contact": "[MASKED]",
+    "shippingAddress,addressLine1": "[MASKED]",
+    "shippingAddress,addressLine2": "[MASKED]",
+    "shippingAddress,city": "[MASKED]",
+    "shippingAddress,state": "[MASKED]",
+    "shippingAddress,postalCode": "[MASKED]",
+    "shippingAddress,countryRegionCode": "[MASKED]",
+    "status": "",
+    "vatAmount": ""
+  },
+  "delete_source_mapping": [],
+  "delete_target_mapping": [],
+  "etl_logs": "No ETL logs found for now.",
+  "live_documentation": "",
+  "prompt_on_total_items_in_database": "Please consider following count of available items in database, after pulling the data from source system, transformed it to Plumbed data and transformed it for target system:\nTotal items available on source data: 4\nTotal items available on plumbed data: 4\nTotal items available on target data: 4\n",
+  "prompt_with_relevant_data_objects": "The user is asking specially about following data:\nSource Data Objects:\n[\n  {\n    \"id\": \"gid://shopify/Order/ORDER_DEMO_001\",\n    \"billingAddress\": \"[MASKED]\",\n    \"createdAt\": \"2026-07-19T08:42:08Z\",\n    \"currencyCode\": \"EUR\",\n    \"customer\": {\n      \"id\": \"gid://shopify/Customer/CUSTOMER_DEMO_001\",\n      \"email\": \"[MASKED_EMAIL]\"\n    },\n    \"displayFinancialStatus\": \"PAID\",\n    \"displayFulfillmentStatus\": \"UNFULFILLED\",\n    \"email\": \"[MASKED_EMAIL]\",\n    \"legacyResourceId\": \"ORDER_DEMO_001\",\n    \"lineItems\": {\n      \"edges\": [\n        {\n          \"node\": {\n            \"id\": \"gid://shopify/LineItem/LINE_DEMO_001\",\n            \"title\": \"Product-apollon\",\n            \"quantity\": 20,\n            \"sku\": null,\n            \"variant\": {\n              \"id\": \"gid://shopify/ProductVariant/VARIANT_DEMO_001\",\n              \"legacyResourceId\": \"VARIANT_DEMO_001\"\n            },\n            \"originalUnitPriceSet\": {\n              \"shopMoney\": {\n                \"amount\": \"10.0\",\n                \"currencyCode\": \"EUR\"\n              }\n            }\n          }\n        }\n      ]\n    },\n    \"name\": \"[MASKED_NAME]\",\n    \"note\": null,\n    \"shippingAddress\": \"[MASKED]\",\n    \"subtotalPriceSet\": {\n      \"shopMoney\": {\n        \"amount\": \"200.0\",\n        \"currencyCode\": \"EUR\"\n      }\n    },\n    \"tags\": [],\n    \"totalPriceSet\": {\n      \"shopMoney\": {\n        \"amount\": \"200.0\",\n        \"currencyCode\": \"EUR\"\n      }\n    },\n    \"totalShippingPriceSet\": {\n      \"shopMoney\": {\n        \"amount\": \"0.0\",\n        \"currencyCode\": \"EUR\"\n      }\n    },\n    \"totalTaxSet\": {\n      \"shopMoney\": {\n        \"amount\": \"0.0\",\n        \"currencyCode\": \"EUR\"\n      }\n    },\n    \"updatedAt\": \"2026-07-21T10:50:21Z\"\n  }\n]\n\n",
+  "source_data_schema": "Attributes are available in Source Data Schema but missing in Source and Target Mapping:\n- legacyResourceId: str\n- name: str\n- email: str, NoneType\n- createdAt: str\n- updatedAt: str\n- displayFinancialStatus: str\n- displayFulfillmentStatus: str\n- currencyCode: str\n- subtotalPriceSet,shopMoney,amount: str\n- subtotalPriceSet,shopMoney,currencyCode: str\n- totalPriceSet,shopMoney,amount: str\n- totalPriceSet,shopMoney,currencyCode: str\n- totalTaxSet,shopMoney,amount: str\n- totalTaxSet,shopMoney,currencyCode: str\n- totalShippingPriceSet,shopMoney,amount: str\n- totalShippingPriceSet,shopMoney,currencyCode: str\n- note: NoneType\n- shippingAddress: NoneType\n- billingAddress: NoneType\n- lineItems,edges,iter,node,id: str\n- lineItems,edges,iter,node,title: str\n- lineItems,edges,iter,node,quantity: int\n- lineItems,edges,iter,node,sku: str, NoneType\n- lineItems,edges,iter,node,variant,id: str\n- lineItems,edges,iter,node,variant,legacyResourceId: str\n- lineItems,edges,iter,node,originalUnitPriceSet,shopMoney,amount: str\n- lineItems,edges,iter,node,originalUnitPriceSet,shopMoney,currencyCode: str\n- shippingAddress,firstName: str\n- shippingAddress,lastName: str\n- shippingAddress,address1: str\n- shippingAddress,address2: NoneType\n- shippingAddress,city: str\n- shippingAddress,province: NoneType\n- shippingAddress,country: str\n- shippingAddress,zip: str\n- shippingAddress,phone: NoneType\n- billingAddress,firstName: str\n- billingAddress,lastName: str\n- billingAddress,address1: str\n- billingAddress,address2: NoneType\n- billingAddress,city: str\n- billingAddress,province: NoneType\n- billingAddress,country: str\n- billingAddress,zip: str\n- billingAddress,phone: NoneType\n",
+  "chat_history": "Not required.",
+  "rag_response": "There isn’t any connector‑specific documentation in the API docs for the exact 502 / ConnectTimeoutError you’re seeing on:\n\n- Endpoint: `POST /store_microsoft_365_erp_orders`\n- Internal call: `http://198.51.100.42:5501/user/get-user-info`\n- Symptom: `ConnectTimeoutError: connection timed out after 60s` leading to HTTP 502\n- Context: Shopify → Microsoft 365 ERP (Dynamics 365 Business Central) order push, failing for order with `legacyResourceId=ORDER_DEMO_001`.\n\nSo I’ll give you a practical, implementation‑level troubleshooting guide that fits how this platform and these SDKs typically work, and how to debug this kind of failure.\n\n---\n## 1. What the 502 + ConnectTimeoutError actually means\n\nFrom the error string:\n\n> `Status 502 on POST .../store_microsoft_365_erp_orders ... caused by ConnectTimeoutError: connection timed out after 60s` while calling `/user/get-user-info` at `198.51.100.42:5501`.\n\nThis indicates:\n\n1. Your Cloud Run (or similar) integration service **did receive** the POST from the integration platform.\n2. Inside that service, before or during the Microsoft ERP push, it tried to call an **internal user service** at `198.51.100.42:5501/user/get-user-info`.\n3. That internal call **never responded within 60 seconds**, so the HTTP client raised `ConnectTimeoutError`.\n4. Your service then returned **HTTP 502** to the integration platform.\n\nSo the failure is **inside your custom target service**, not in Shopify, not in the integration platform, and not in Business Central itself (at least not yet).\n\n---\n## 2. Immediate checks on the internal `/user/get-user-info` service\n\nOn the infrastructure side, verify:\n\n1. **Service reachability**\n   - From the same environment where `store_microsoft_365_erp_orders` runs, run:\n     - `curl -v http://198.51.100.42:5501/user/get-user-info` (or the equivalent in a debug pod / Cloud Run shell).\n   - If this hangs or times out, you have a **networking or service availability** issue.\n\n2. **Port / firewall / VPC**\n   - Confirm that port **5501** is open and routable from the Cloud Run service (or whatever runtime you use).\n   - If you recently changed VPC connectors, firewall rules, or moved the user service, this is a prime suspect.\n\n3. **User service health**\n   - Check logs of the service behind `198.51.100.42:5501`.\n   - Confirm it is **listening on 0.0.0.0:5501** and not just localhost.\n   - Confirm it responds quickly to `/user/get-user-info` for the same parameters your order push uses.\n\n4. **Timeout configuration**\n   - In your order‑push SDK / service code, find the HTTP client call to `/user/get-user-info`.\n   - Check the timeout (60s in the error). If the user service is slow but functional, you may need to:\n     - Reduce the dependency (cache user info, avoid calling it per order), or\n     - Increase timeout slightly, or\n     - Make the call asynchronous / non‑blocking if possible.\n\n---\n## 3. Troubleshooting the specific failing order (legacyResourceId ORDER_DEMO_001)\n\nEven though the 502 is due to the internal user service, you still want to:\n\n1. **Confirm the order payload reached your service**\n   - In your `store_microsoft_365_erp_orders` handler, log at the very start:\n     - The **Shopify order ID** and `legacyResourceId`.\n     - The **raw request body** (or at least a sanitized version without PII/payment data).\n   - Then check logs around the time of the failure to confirm that order `ORDER_DEMO_001` was received.\n\n2. **Check if the user lookup depends on order data**\n   - Often `/user/get-user-info` is called with something like:\n     - Shopify customer ID\n     - Email\n     - Some tenant / account identifier\n   - Verify that for this order, the parameters passed to `/user/get-user-info` are valid and not `null` or malformed.\n   - Add logging right before the call to `/user/get-user-info`:\n     - What URL is being called\n     - Query/body parameters\n     - Correlation ID (e.g., `legacyResourceId`)\n\n3. **Replay the order manually**\n   - Use the same payload (from logs) and call your Cloud Run endpoint manually:\n     - `curl -X POST https://.../store_microsoft_365_erp_orders -H 'Content-Type: application/json' -d @order_ORDER_DEMO_001.json`\n   - Observe whether it still times out on `/user/get-user-info`.\n   - If it does, you can debug in isolation without re‑triggering from the integration platform.\n\n---\n## 4. SDK payload logging for Microsoft 365 ERP order push\n\nSince you already requested SDK logging for each payload sent to Microsoft ERP, ensure the following are in place in your target SDK / service:\n\n1. **Log before calling Business Central**\n   - Right before the HTTP call to Business Central’s Orders API, log:\n     - Correlation ID: Shopify `legacyResourceId` and/or Shopify order ID.\n     - The **mapped payload** (or a redacted version).\n     - The target URL (without secrets) and HTTP method.\n\n2. **Log after the call**\n   - On success:\n     - Status code, response time, and key identifiers from Business Central (e.g., order number, document ID).\n   - On failure:\n     - Status code, response body, and any error codes/messages.\n\n3. **Guard against logging sensitive data**\n   - Mask or omit:\n     - Access tokens / API keys\n     - Full customer PII (emails, addresses) if your policies require it\n     - Payment details\n\n4. **Tie logs to the integration platform run**\n   - If the integration platform passes a `run_id`, `job_id`, or similar, include it in your logs.\n   - This makes it easier to correlate a specific failed trigger (for order `ORDER_DEMO_001`) with your service logs.\n\n5. **Add explicit logging around the user service call**\n   - Since the failure is before or during the user lookup, add logs like:\n     - `\"[order ORDER_DEMO_001] Calling /user/get-user-info with {params}...\"`\n     - `\"[order ORDER_DEMO_001] /user/get-user-info failed: timeout after 60s\"`\n   - This will confirm the exact step where the request stalls.\n\n---\n## 5. Integration‑platform‑side checks (Shopify → Microsoft 365 ERP connection)\n\nOn the integration platform side (connection `shopify_demo_00000000-0000-4000-8000-000000000001__erp_demo_00000000-0000-4000-8000-000000000001`):\n\n1. **Confirm the trigger status**\n   - The platform will show the run as **failed** or **errored** with HTTP 502 from the target.\n   - This is expected; the platform cannot see inside your Cloud Run service.\n\n2. **Re‑run the failed order**\n   - Once you’ve fixed the internal timeout (user service reachable and responsive), re‑trigger the push for the specific order.\n   - If the platform supports **replay of a single failed item**, use that; otherwise, re‑run the relevant time window and ensure idempotency on the ERP side.\n\n3. **Check mapping layer logs (if available)**\n   - If the platform has mapping‑level logs, confirm that the mapped payload for `ORDER_DEMO_001` looks correct and that the failure only occurs after the platform calls your target endpoint.\n\n---\n## 6. Common root causes and how to fix them\n\nBased on the pattern of your error, the most likely causes are:\n\n1. **User service down or unreachable**\n   - Fix: Restart the service, correct DNS/IP, open firewall, or fix VPC routing.\n\n2. **User service very slow**\n   - Fix: Optimize the user service, add caching, or increase timeout slightly.\n\n3. **Misconfiguration in the order‑push service**\n   - Wrong base URL or port for `/user/get-user-info`.\n   - Using an internal IP that is no longer valid.\n   - Fix: Update configuration and redeploy.\n\n4. **Blocking call pattern**\n   - If `/user/get-user-info` is called synchronously for every order and that service is slow, you can easily hit timeouts under load.\n   - Fix: Pre‑fetch or cache user info, or decouple user enrichment from the synchronous order push.\n\n---\n## 7. Minimal checklist for your current incident\n\nFor the specific failure with `legacyResourceId=ORDER_DEMO_001`, here’s a concise checklist:\n\n1. In `store_microsoft_365_erp_orders` logs, confirm:\n   - Request received for order `ORDER_DEMO_001`.\n   - Log line right before calling `/user/get-user-info`.\n   - No log line after that call (indicating timeout).\n\n2. From the same runtime environment, run:\n   - `curl http://198.51.100.42:5501/user/get-user-info` (with the same params) and see if it returns quickly.\n\n3. Fix any connectivity / availability issues with the user service.\n\n4. Ensure SDK logging is in place:\n   - Log mapped payload and ERP response for this order.\n\n5. Re‑run the push for order `ORDER_DEMO_001` from the integration platform.\n\nIf you share the structure of your `store_microsoft_365_erp_orders` handler (pseudocode is fine), I can suggest exactly where to add logging and how to structure retries/timeouts for `/user/get-user-info` and the Business Central API calls."
+}

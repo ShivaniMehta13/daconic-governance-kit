@@ -1,0 +1,16 @@
+{
+  "id": "plumbed-outbound-binding",
+  "version": "v1",
+  "actions": [
+    "llm_send"
+  ],
+  "checks": [
+    {
+      "id": "complete-outbound-matches-transformed",
+      "kind": "matches_transformed",
+      "stage": "outbound",
+      "path": "",
+      "value": null
+    }
+  ]
+}

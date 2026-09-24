@@ -1,0 +1,15 @@
+services:
+  observation:
+    build:
+      context: .
+      dockerfile: Dockerfile.observation
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      DACONIC_API_TOKEN: ${DACONIC_API_TOKEN:?Set a random token of at least 32 characters}
+    volumes:
+      - observation-state:/state
+      - ./examples/observation_policies:/policies:ro
+    restart: unless-stopped
+volumes:
+  observation-state:

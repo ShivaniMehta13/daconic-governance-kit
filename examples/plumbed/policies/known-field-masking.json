@@ -1,0 +1,128 @@
+{
+  "id": "plumbed-known-field-masking",
+  "version": "v1",
+  "actions": [
+    "llm_send"
+  ],
+  "checks": [
+    {
+      "id": "mask-source-billingAddress",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_source_data/billingAddress",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-source-name",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_source_data/name",
+      "value": "[MASKED_NAME]"
+    },
+    {
+      "id": "mask-source-shippingAddress",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_source_data/shippingAddress",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-billingAddress-contact",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/billingAddress,contact",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-billingAddress-addressLine1",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/billingAddress,addressLine1",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-billingAddress-addressLine2",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/billingAddress,addressLine2",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-billingAddress-city",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/billingAddress,city",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-billingAddress-state",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/billingAddress,state",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-billingAddress-postalCode",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/billingAddress,postalCode",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-billingAddress-countryRegionCode",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/billingAddress,countryRegionCode",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-shippingAddress-contact",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/shippingAddress,contact",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-shippingAddress-addressLine1",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/shippingAddress,addressLine1",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-shippingAddress-addressLine2",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/shippingAddress,addressLine2",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-shippingAddress-city",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/shippingAddress,city",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-shippingAddress-state",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/shippingAddress,state",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-shippingAddress-postalCode",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/shippingAddress,postalCode",
+      "value": "[MASKED]"
+    },
+    {
+      "id": "mask-target-shippingAddress-countryRegionCode",
+      "kind": "equals",
+      "stage": "outbound",
+      "path": "/flattened_target_data/shippingAddress,countryRegionCode",
+      "value": "[MASKED]"
+    }
+  ]
+}

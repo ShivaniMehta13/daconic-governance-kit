@@ -1,0 +1,20 @@
+{
+  "agent_id": "reader-agent",
+  "version": "v1",
+  "capabilities": {
+    "read_record": {
+      "kind": "read",
+      "restricted_response_paths": ["/pan", "/password"],
+      "corroborate_paths": ["/record_id", "/case_id", "/balance_minor"]
+    }
+  },
+  "rules": ["scope", "reference", "restricted_data"],
+  "params": {
+    "autonomous_minor": 10000,
+    "ceiling_minor": 50000,
+    "concurrency": 2,
+    "approval_seconds": 600,
+    "facts_max_age_seconds": 86400
+  },
+  "routes": [{"priority": 10, "match": {"action": "read_record"}}]
+}

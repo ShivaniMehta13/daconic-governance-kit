@@ -1,0 +1,28 @@
+{
+  "id": "dreamhomes-refund-policy",
+  "version": "v1",
+  "actions": ["issueRefund", "requestApproval"],
+  "checks": [
+    {
+      "id": "approved-agent",
+      "kind": "in",
+      "stage": "context",
+      "path": "/principal",
+      "value": ["refund-agent"]
+    },
+    {
+      "id": "no-pii-outbound",
+      "kind": "no_categories",
+      "stage": "outbound",
+      "path": "",
+      "value": ["PII", "CREDENTIAL", "PAYMENT_CARD", "FINANCIAL_PII"]
+    },
+    {
+      "id": "transformed-matches-outbound",
+      "kind": "matches_transformed",
+      "stage": "outbound",
+      "path": "",
+      "value": null
+    }
+  ]
+}

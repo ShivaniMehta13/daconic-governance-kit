@@ -1,0 +1,30 @@
+{
+  "id": "plumbed-connection-fields",
+  "version": "v1",
+  "actions": [
+    "llm_send"
+  ],
+  "checks": [
+    {
+      "id": "omit-error-trigger-endpoint",
+      "kind": "forbidden",
+      "stage": "outbound",
+      "path": "/error_trigger_endpoint",
+      "value": null
+    },
+    {
+      "id": "omit-error-logs",
+      "kind": "forbidden",
+      "stage": "outbound",
+      "path": "/error_logs",
+      "value": null
+    },
+    {
+      "id": "omit-rag-response",
+      "kind": "forbidden",
+      "stage": "outbound",
+      "path": "/rag_response",
+      "value": null
+    }
+  ]
+}

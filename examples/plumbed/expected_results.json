@@ -1,0 +1,488 @@
+[
+  {
+    "case": "sensitive-patterns-raw",
+    "simulation": true,
+    "compliance": "VIOLATION",
+    "checks": [
+      {
+        "id": "no-pii",
+        "check_index": 1,
+        "kind": "no_categories",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "restricted_data_detected"
+      },
+      {
+        "id": "no-credential",
+        "check_index": 2,
+        "kind": "no_categories",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "no-payment_card",
+        "check_index": 3,
+        "kind": "no_categories",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "restricted_data_detected"
+      }
+    ]
+  },
+  {
+    "case": "sensitive-patterns-masked",
+    "simulation": true,
+    "compliance": "VIOLATION",
+    "checks": [
+      {
+        "id": "no-pii",
+        "check_index": 1,
+        "kind": "no_categories",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "no-credential",
+        "check_index": 2,
+        "kind": "no_categories",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "no-payment_card",
+        "check_index": 3,
+        "kind": "no_categories",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "restricted_data_detected"
+      }
+    ]
+  },
+  {
+    "case": "known-field-masking-raw",
+    "simulation": true,
+    "compliance": "VIOLATION",
+    "checks": [
+      {
+        "id": "mask-source-billingAddress",
+        "check_index": 1,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-source-name",
+        "check_index": 2,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-source-shippingAddress",
+        "check_index": 3,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-billingAddress-contact",
+        "check_index": 4,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-billingAddress-addressLine1",
+        "check_index": 5,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-billingAddress-addressLine2",
+        "check_index": 6,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-billingAddress-city",
+        "check_index": 7,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-billingAddress-state",
+        "check_index": 8,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-billingAddress-postalCode",
+        "check_index": 9,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-billingAddress-countryRegionCode",
+        "check_index": 10,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-shippingAddress-contact",
+        "check_index": 11,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-shippingAddress-addressLine1",
+        "check_index": 12,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-shippingAddress-addressLine2",
+        "check_index": 13,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-shippingAddress-city",
+        "check_index": 14,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-shippingAddress-state",
+        "check_index": 15,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-shippingAddress-postalCode",
+        "check_index": 16,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      },
+      {
+        "id": "mask-target-shippingAddress-countryRegionCode",
+        "check_index": 17,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "value_mismatch"
+      }
+    ]
+  },
+  {
+    "case": "known-field-masking-masked",
+    "simulation": true,
+    "compliance": "COMPLIANT",
+    "checks": [
+      {
+        "id": "mask-source-billingAddress",
+        "check_index": 1,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-source-name",
+        "check_index": 2,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-source-shippingAddress",
+        "check_index": 3,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-billingAddress-contact",
+        "check_index": 4,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-billingAddress-addressLine1",
+        "check_index": 5,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-billingAddress-addressLine2",
+        "check_index": 6,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-billingAddress-city",
+        "check_index": 7,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-billingAddress-state",
+        "check_index": 8,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-billingAddress-postalCode",
+        "check_index": 9,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-billingAddress-countryRegionCode",
+        "check_index": 10,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-shippingAddress-contact",
+        "check_index": 11,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-shippingAddress-addressLine1",
+        "check_index": 12,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-shippingAddress-addressLine2",
+        "check_index": 13,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-shippingAddress-city",
+        "check_index": 14,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-shippingAddress-state",
+        "check_index": 15,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-shippingAddress-postalCode",
+        "check_index": 16,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "mask-target-shippingAddress-countryRegionCode",
+        "check_index": 17,
+        "kind": "equals",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      }
+    ]
+  },
+  {
+    "case": "connection-fields-raw",
+    "simulation": true,
+    "compliance": "VIOLATION",
+    "checks": [
+      {
+        "id": "omit-error-trigger-endpoint",
+        "check_index": 1,
+        "kind": "forbidden",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "restricted_field_present"
+      },
+      {
+        "id": "omit-error-logs",
+        "check_index": 2,
+        "kind": "forbidden",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "restricted_field_present"
+      },
+      {
+        "id": "omit-rag-response",
+        "check_index": 3,
+        "kind": "forbidden",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "restricted_field_present"
+      }
+    ]
+  },
+  {
+    "case": "connection-fields-masked",
+    "simulation": true,
+    "compliance": "VIOLATION",
+    "checks": [
+      {
+        "id": "omit-error-trigger-endpoint",
+        "check_index": 1,
+        "kind": "forbidden",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "restricted_field_present"
+      },
+      {
+        "id": "omit-error-logs",
+        "check_index": 2,
+        "kind": "forbidden",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "restricted_field_present"
+      },
+      {
+        "id": "omit-rag-response",
+        "check_index": 3,
+        "kind": "forbidden",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "restricted_field_present"
+      }
+    ]
+  },
+  {
+    "case": "connection-fields-omitted",
+    "simulation": true,
+    "compliance": "COMPLIANT",
+    "checks": [
+      {
+        "id": "omit-error-trigger-endpoint",
+        "check_index": 1,
+        "kind": "forbidden",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "omit-error-logs",
+        "check_index": 2,
+        "kind": "forbidden",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      },
+      {
+        "id": "omit-rag-response",
+        "check_index": 3,
+        "kind": "forbidden",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      }
+    ]
+  },
+  {
+    "case": "binding-simulated-match",
+    "simulation": true,
+    "compliance": "COMPLIANT",
+    "checks": [
+      {
+        "id": "complete-outbound-matches-transformed",
+        "check_index": 1,
+        "kind": "matches_transformed",
+        "stage": "outbound",
+        "status": "PASS",
+        "reason": "condition_satisfied"
+      }
+    ]
+  },
+  {
+    "case": "binding-simulated-substitution",
+    "simulation": true,
+    "compliance": "VIOLATION",
+    "checks": [
+      {
+        "id": "complete-outbound-matches-transformed",
+        "check_index": 1,
+        "kind": "matches_transformed",
+        "stage": "outbound",
+        "status": "FAIL",
+        "reason": "payload_substitution"
+      }
+    ]
+  },
+  {
+    "case": "binding-actual-outbound-unavailable",
+    "simulation": false,
+    "compliance": "INSUFFICIENT_EVIDENCE",
+    "checks": [
+      {
+        "id": "complete-outbound-matches-transformed",
+        "check_index": 1,
+        "kind": "matches_transformed",
+        "stage": "outbound",
+        "status": "UNKNOWN",
+        "reason": "original_payload_unavailable"
+      }
+    ]
+  }
+]

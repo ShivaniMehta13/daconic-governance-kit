@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Daconic transaction",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "transaction_id",
+    "case_id",
+    "action",
+    "arguments"
+  ],
+  "properties": {
+    "transaction_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,80}$"
+    },
+    "case_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,80}$"
+    },
+    "action": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,80}$"
+    },
+    "channel": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,80}$"
+    },
+    "arguments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,80}$"
+        },
+        "amount_minor": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "approval_token": {
+      "type": "string",
+      "maxLength": 128
+    }
+  }
+}

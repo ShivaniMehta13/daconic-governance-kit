@@ -1,0 +1,28 @@
+{
+  "wheel_source_match": true,
+  "wheel_sha256": "70658835044f13ff38afe3b9b183cf76f77a94d803bedfa03f12c369a3b0a4c6",
+  "offline_network_disabled": true,
+  "verifier_runs": [
+    {
+      "status": "PASS",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "status": "INCOMPLETE",
+      "errors": [],
+      "warnings": [
+        "PAYLOADS_NOT_CHECKED"
+      ]
+    },
+    {
+      "status": "FAIL",
+      "errors": [
+        "record 1: missing or corrupt payload"
+      ],
+      "warnings": []
+    }
+  ],
+  "docker_runtime_tested": false,
+  "cross_platform_tested": false
+}

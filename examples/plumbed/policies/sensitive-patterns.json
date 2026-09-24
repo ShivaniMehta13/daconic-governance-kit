@@ -1,0 +1,36 @@
+{
+  "id": "plumbed-sensitive-patterns",
+  "version": "v1",
+  "actions": [
+    "llm_send"
+  ],
+  "checks": [
+    {
+      "id": "no-pii",
+      "kind": "no_categories",
+      "stage": "outbound",
+      "path": "",
+      "value": [
+        "PII"
+      ]
+    },
+    {
+      "id": "no-credential",
+      "kind": "no_categories",
+      "stage": "outbound",
+      "path": "",
+      "value": [
+        "CREDENTIAL"
+      ]
+    },
+    {
+      "id": "no-payment_card",
+      "kind": "no_categories",
+      "stage": "outbound",
+      "path": "",
+      "value": [
+        "PAYMENT_CARD"
+      ]
+    }
+  ]
+}
