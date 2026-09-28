@@ -16,9 +16,9 @@ def fetch_traces(base_url, flow_id, api_key, page=1, size=5):
         "page": page,
         "size": size,
     })
-    request = Request(endpoint, headers={"X-API-Key": api_key, "Accept": "application/json"})
+    request = Request(endpoint, headers={"X-API-Key": api_key, "Accept": "application/json"}, method="GET")
     try:
-        with urlopen(request) as response:
+        with urlopen(request, timeout=30) as response:
             try:
                 payload = json.loads(response.read())
             except (json.JSONDecodeError, UnicodeDecodeError) as error:

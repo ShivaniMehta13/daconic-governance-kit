@@ -7,7 +7,7 @@ from daconic_governance.trace_client import fetch_traces
 
 
 BASE_URL = "https://ottom8.nhtech.link"
-FLOW_ID = "f12d310d-2c3d-436f-ae25-d1c3b959d9a2>"
+FLOW_ID = "f12d310d-2c3d-436f-ae25-d1c3b959d9a2"
 API_KEY = "sk-DUAimQsir-R-99iRuOJ_Qo3yk1Qa7xhbX47wyIWpg-E"
 BATCH_SIZE = 5
 
