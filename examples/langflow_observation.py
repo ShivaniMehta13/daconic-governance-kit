@@ -15,7 +15,14 @@ trace = {
     "output": {"output": {"data": {"value": {"status": "success"}}}},
 }
 policy = json.loads((ROOT / "observation_policies/pii.json").read_text())
-observation = langflow_trace_to_observation(trace, policy)
+observation = langflow_trace_to_observation(
+    trace,
+    policy,
+    action="llm_send",
+    principal="langflow-flow",
+    resource="contact-form",
+    destination="synthetic-endpoint",
+)
 
 with Observer("./langflow-observation-state", [policy]) as observer:
     print(observer.observe(observation)["compliance"])
