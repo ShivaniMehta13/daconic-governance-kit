@@ -8,15 +8,15 @@
     {"id": "POLICY-GOV-003", "kind": "no_categories", "stage": "outbound", "path": "", "value": ["PII", "CREDENTIAL", "PAYMENT_CARD", "FINANCIAL_PII"]},
     {"id": "POLICY-GOV-004", "kind": "required", "stage": "input", "path": "", "value": null},
     {"id": "POLICY-GOV-005", "kind": "required", "stage": "input", "path": "", "value": null},
-    {"id": "POLICY-GOV-006", "kind": "matches_transformed", "stage": "outbound", "path": "", "value": null},
+    {"id": "POLICY-GOV-015", "kind": "required", "stage": "input", "path": "", "value": null},
     {"id": "POLICY-GOV-007", "kind": "required", "stage": "input", "path": "", "value": null},
     {"id": "POLICY-GOV-008", "kind": "required", "stage": "input", "path": "", "value": null},
     {"id": "POLICY-GOV-009", "kind": "required", "stage": "input", "path": "", "value": null},
-    {"id": "POLICY-GOV-010", "kind": "required", "stage": "transformed", "path": "", "value": null},
+    {"id": "POLICY-GOV-010", "kind": "required", "stage": "input", "path": "", "value": null},
     {"id": "POLICY-GOV-011", "kind": "no_categories", "stage": "outbound", "path": "", "value": ["PII", "CREDENTIAL", "PAYMENT_CARD", "FINANCIAL_PII"]},
     {"id": "POLICY-GOV-012", "kind": "required", "stage": "input", "path": "", "value": null},
     {"id": "POLICY-GOV-013", "kind": "required", "stage": "input", "path": "", "value": null},
     {"id": "POLICY-GOV-014", "kind": "required", "stage": "input", "path": "", "value": null},
-    {"id": "POLICY-GOV-015", "kind": "required", "stage": "transformed", "path": "", "value": null}
+    {"id": "POLICY-GOV-006", "kind": "matches_transformed", "stage": "outbound", "path": "", "value": null}
   ]
 }

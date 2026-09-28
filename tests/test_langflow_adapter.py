@@ -68,3 +68,30 @@ def test_observation_can_be_submitted_to_observer(tmp_path):
     with Observer(tmp_path, [policy()]) as observer:
         result = observer.observe(trace)
     assert result["compliance"] == "INSUFFICIENT_EVIDENCE"
+
+
+def test_langflow_monitor_fixture_observes_without_inferred_outbound(tmp_path):
+    monitor_trace = json.loads((ROOT / "examples/observation_traces/langflow-monitor-trace.json").read_text())
+    configured_policy = policy()
+    observation = langflow_trace_to_observation(monitor_trace, configured_policy, action="llm_send")
+
+    assert observation["interaction_id"] == monitor_trace["id"]
+    assert observation["correlation_id"] == monitor_trace["sessionId"]
+    assert observation["agent_id"] == monitor_trace["flowId"]
+    assert observation["stages"]["input"]["payload"] == {
+        "name": "Test User",
+        "email": "synthetic@example.test",
+    }
+    assert observation["stages"]["transformed"]["availability"] == "unavailable"
+    assert observation["stages"]["outbound"]["availability"] == "unavailable"
+    assert "payload" not in observation["stages"]["outbound"]
+
+    with Observer(tmp_path, [configured_policy]) as observer:
+        result = observer.observe(observation)
+
+    assert result["compliance"] == "INSUFFICIENT_EVIDENCE"
+    assert result["action"]
+    assert result["evidence_id"]
+    assert result["evidence_hash"]
+    assert len(result["checks"]) == len(configured_policy["checks"]) == 15
+    assert result["checks"][0]["status"] == "PASS"
