@@ -1,0 +1,20 @@
+{
+  "id": "trace-contact-001",
+  "flowId": "flow-contact-001",
+  "flowName": "Synthetic Contact Flow",
+  "sessionId": "session-contact-001",
+  "startTime": "2026-09-22T05:35:10.246956",
+  "status": "ok",
+  "input": {
+    "input_value": "{\"name\":\"Test User\",\"email\":\"synthetic@example.test\"}"
+  },
+  "output": {
+    "output": {
+      "data": {
+        "value": {
+          "status": "success"
+        }
+      }
+    }
+  }
+}
