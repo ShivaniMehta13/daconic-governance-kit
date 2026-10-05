@@ -1,0 +1,42 @@
+{
+  "schema_version": "1",
+  "interaction_id": "trace-contact-001",
+  "correlation_id": "session-contact-001",
+  "agent_id": "flow-contact-001",
+  "action": "flow_execution",
+  "scenario": "without_processing",
+  "policy": {
+    "id": "llm-data-policy",
+    "version": "v1"
+  },
+  "context": {
+    "principal": null,
+    "delegated_user": null,
+    "resource": null,
+    "destination": null
+  },
+  "stages": {
+    "input": {
+      "availability": "present",
+      "source": "langflow-monitor",
+      "observed_at_ns": 1780000000246956000,
+      "representation": "canonical-json-v1",
+      "payload": {
+        "name": "Test User",
+        "email": "synthetic@example.test"
+      }
+    },
+    "transformed": {
+      "availability": "unavailable",
+      "source": "langflow-monitor",
+      "observed_at_ns": 1780000000246956000,
+      "representation": "canonical-json-v1"
+    },
+    "outbound": {
+      "availability": "unavailable",
+      "source": "langflow-monitor",
+      "observed_at_ns": 1780000000246956000,
+      "representation": "canonical-json-v1"
+    }
+  }
+}
