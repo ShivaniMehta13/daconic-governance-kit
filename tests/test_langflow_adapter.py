@@ -34,13 +34,36 @@ def test_langflow_trace_maps_and_validates():
     assert observation["action"] == "flow_execution"
     assert observation["stages"]["input"]["payload"]["email"] == "synthetic@example.test"
     assert observation["stages"]["input"]["observed_at_ns"] == 1790055310246956000
+    assert observation["stages"]["outbound"]["payload"] == {"status": "success"}
 
 
 def test_malformed_input_is_preserved_and_unavailable_stages_are_not_inferred():
     observation = langflow_trace_to_observation(langflow_trace("not-json"), policy())
     assert observation["stages"]["input"]["payload"] == "not-json"
     assert observation["stages"]["transformed"]["availability"] == "unavailable"
-    assert observation["stages"]["outbound"]["availability"] == "unavailable"
+    assert observation["stages"]["outbound"]["payload"] == {"status": "success"}
+
+
+def test_ottom8_input_and_execution_output_are_mapped_as_evidence():
+    trace = langflow_trace()
+    expected_output = {
+        "status": "success",
+        "recipient": "synthetic@example.test",
+        "subject": "Your appointment is confirmed",
+        "email_id": "message-001",
+        "response": {"id": "message-001"},
+    }
+    trace["output"]["output"]["data"]["value"] = expected_output
+
+    observation = langflow_trace_to_observation(trace, policy(), action="llm_send")
+
+    assert observation["stages"]["input"]["payload"] == {
+        "name": "Test User",
+        "email": "synthetic@example.test",
+    }
+    assert observation["stages"]["outbound"]["availability"] == "present"
+    assert observation["stages"]["outbound"]["payload"] == expected_output
+    assert observation["stages"]["transformed"]["availability"] == "unavailable"
 
 
 def test_explicit_snapshots_are_mapped_with_configured_metadata():
@@ -70,7 +93,7 @@ def test_observation_can_be_submitted_to_observer(tmp_path):
     assert result["compliance"] == "INSUFFICIENT_EVIDENCE"
 
 
-def test_langflow_monitor_fixture_observes_without_inferred_outbound(tmp_path):
+def test_langflow_monitor_fixture_observes_with_reported_output(tmp_path):
     monitor_trace = json.loads((ROOT / "examples/observation_traces/langflow-monitor-trace.json").read_text())
     configured_policy = policy()
     observation = langflow_trace_to_observation(monitor_trace, configured_policy, action="llm_send")
@@ -83,8 +106,8 @@ def test_langflow_monitor_fixture_observes_without_inferred_outbound(tmp_path):
         "email": "synthetic@example.test",
     }
     assert observation["stages"]["transformed"]["availability"] == "unavailable"
-    assert observation["stages"]["outbound"]["availability"] == "unavailable"
-    assert "payload" not in observation["stages"]["outbound"]
+    assert observation["stages"]["outbound"]["availability"] == "present"
+    assert observation["stages"]["outbound"]["payload"] == {"status": "success"}
 
     with Observer(tmp_path, [configured_policy]) as observer:
         result = observer.observe(observation)

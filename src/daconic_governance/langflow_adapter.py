@@ -39,10 +39,21 @@ def _input_payload(trace):
     return copy.deepcopy(value), True
 
 
-def _stage(source, observed_at_ns, payload=None):
+def _output_payload(trace):
+    value = trace.get("output")
+    for key in ("output", "data", "value"):
+        if not isinstance(value, dict) or key not in value:
+            return None, False
+        value = value[key]
+    return copy.deepcopy(value), True
+
+
+def _stage(source, observed_at_ns, payload=None, available=None):
     stage = {"availability": "unavailable", "source": source,
              "observed_at_ns": observed_at_ns, "representation": "canonical-json-v1"}
-    if payload is not None:
+    if available is None:
+        available = payload is not None
+    if available:
         stage["availability"] = "present"
         stage["payload"] = copy.deepcopy(payload)
     return stage
@@ -75,8 +86,8 @@ def langflow_trace_to_observation(
 ):
     """Build and validate a Daconic trace from one Langflow monitor record.
 
-    Final Langflow output is intentionally not treated as transformed or outbound
-    evidence. Those stages require explicit snapshots supplied by instrumentation.
+    Ottom8's monitor output value is preserved as outbound-stage evidence when
+    present. It is monitor-reported output, not an independent egress capture.
     """
     if not isinstance(trace, dict):
         raise ValueError("Langflow trace must be an object")
@@ -84,9 +95,11 @@ def langflow_trace_to_observation(
     correlation_id = trace.get("sessionId") or interaction_id
     agent_id = trace.get("flowId")
     input_payload, input_available = _input_payload(trace)
+    trace_output, trace_output_available = _output_payload(trace)
     timestamp = _timestamp_ns(trace.get("startTime"), observed_at_ns)
     transformed_available = transformed_payload is not None
-    outbound_available = outbound_payload is not None
+    outbound_available = outbound_payload is not None or trace_output_available
+    observed_outbound = outbound_payload if outbound_payload is not None else trace_output
     observation = {
         "schema_version": "1",
         "interaction_id": interaction_id,
@@ -98,13 +111,13 @@ def langflow_trace_to_observation(
         "context": {"principal": principal, "delegated_user": delegated_user,
                     "resource": resource, "destination": destination},
         "stages": {
-            "input": _stage(source, timestamp, input_payload if input_available else None),
+                "input": _stage(source, timestamp, input_payload, input_available),
             "transformed": _stage(transformed_source or source,
                                    _timestamp_ns(transformed_observed_at_ns, timestamp),
-                                   transformed_payload if transformed_available else None),
+                                              transformed_payload, transformed_available),
             "outbound": _stage(outbound_source or source,
                                 _timestamp_ns(outbound_observed_at_ns, timestamp),
-                                outbound_payload if outbound_available else None),
+                                          observed_outbound, outbound_available),
         },
     }
     return validate_trace(observation)
